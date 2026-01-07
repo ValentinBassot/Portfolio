@@ -1,0 +1,12 @@
+{
+  "name": "portfolio-backend",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "set-sudo": "node set_sudo_hash.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}

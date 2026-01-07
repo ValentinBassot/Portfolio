@@ -37,21 +37,20 @@ a:hover {
     flex-direction: column;
     padding: 18px;
     border-radius: 14px;
-    background: rgba(10,8,12,0.28);
+    background: rgba(10, 8, 12, 0.28);
     -webkit-backdrop-filter: blur(16px) saturate(1.05);
     backdrop-filter: blur(16px) saturate(1.05);
-    border: 1px solid rgba(255,255,255,0.06);
-    box-shadow: 0 18px 40px rgba(2,6,10,0.6), 0 2px 0 rgba(255,255,255,0.02) inset;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    box-shadow: 0 18px 40px rgba(2, 6, 10, 0.6), 0 2px 0 rgba(255, 255, 255, 0.02) inset;
 }
 
-/* Slight outer frame to make the wallpaper "peek" a bit around the window */
 .terminal-container::after {
     content: '';
     position: absolute;
     inset: -10px;
     border-radius: 18px;
     pointer-events: none;
-    box-shadow: 0 0 0 6px rgba(0,0,0,0.18);
+    box-shadow: 0 0 0 6px rgba(0, 0, 0, 0.18);
     z-index: 0;
 }
 
@@ -61,7 +60,7 @@ a:hover {
     gap: 15px;
     margin-bottom: 16px;
     padding-bottom: 12px;
-    border-bottom: 1px solid rgba(255,255,255,0.03);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
 }
 
 .terminal-title {
@@ -81,9 +80,17 @@ a:hover {
     border-radius: 50%;
 }
 
-.btn.close { background: #ff5f56; }
-.btn.minimize { background: #ffbd2e; }
-.btn.maximize { background: #27c93f; }
+.btn.close {
+    background: #ff5f56;
+}
+
+.btn.minimize {
+    background: #ffbd2e;
+}
+
+.btn.maximize {
+    background: #27c93f;
+}
 
 .terminal {
     flex: 1;
@@ -106,7 +113,7 @@ a:hover {
 }
 
 .prompt {
-    color: #3b82f6;
+    color: #b3adad;
 }
 
 .command {
@@ -128,6 +135,43 @@ a:hover {
 .line {
     margin-bottom: 5px;
     line-height: 1.5;
+}
+
+.tree-prefix {
+    color: #6b7280;
+    /* muted for connectors */
+}
+
+.tree-name {
+    padding-left: 0.2rem;
+}
+
+.tree-level-0 .tree-name {
+    color: #93c5fd;
+}
+
+.tree-level-1 .tree-name {
+    color: #60a5fa;
+}
+
+.tree-level-2 .tree-name {
+    color: #7dd3fc;
+}
+
+.tree-level-3 .tree-name {
+    color: #67e8f9;
+}
+
+.tree-level-4 .tree-name {
+    color: #c3e88d;
+}
+
+.tree-file.tree-level-0 .tree-name,
+.tree-file.tree-level-1 .tree-name,
+.tree-file.tree-level-2 .tree-name,
+.tree-file.tree-level-3 .tree-name,
+.tree-file.tree-level-4 .tree-name {
+    color: #b3adad;
 }
 
 .prompt-symbol {
@@ -160,17 +204,22 @@ a:hover {
     font-size: 14px;
 }
 
+.sudo-password-input {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: transparent;
+    caret-color: transparent;
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+}
+
 .cursor {
     display: inline-block;
     width: 8px;
     height: 16px;
     background: #60a5fa;
     animation: blink 1s infinite;
-}
-
-@keyframes blink {
-    0%, 50% { opacity: 1; }
-    51%, 100% { opacity: 0; }
 }
 
 .ascii-art {
@@ -200,6 +249,21 @@ a:hover {
     pointer-events: none;
 }
 
+@keyframes blink {
+
+    0%,
+    50% {
+        opacity: 1;
+    }
+
+    51%,
+    100% {
+        opacity: 0;
+    }
+}
+
 @supports not ((-webkit-backdrop-filter: blur(16px)) or (backdrop-filter: blur(16px))) {
-    .terminal-container { background: rgba(10, 6, 6, 0.4); }
+    .terminal-container {
+        background: rgba(10, 6, 6, 0.4);
+    }
 }
