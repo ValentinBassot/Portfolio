@@ -15,6 +15,7 @@ const commands = {
     "yes" : [yes, "Output 'yes' indefinitely"],
     "clear" : [clear, "Clear the terminal"],
     "whoami" : [whoami, "Show your public IP"],
+    "exit" : [exitCmd, "Close the terminal and open index.html"],
 };
 
 const commandAliases = {
@@ -121,7 +122,7 @@ function yes() {
   yesInterval = setInterval(() => {
     const line = document.createElement("div");
     line.className = "line output-line info";
-    line.innerHTML = "yes";
+    line.innerHTML = "y";
     terminal.appendChild(line);
     terminal.scrollTop = terminal.scrollHeight;
   }, 50);
@@ -170,6 +171,41 @@ function clear() {
     terminal.appendChild(info2);
 }
 
+function exitCmd() {
+    // Stop any running output (like yes)
+    if (yesInterval) {
+        clearInterval(yesInterval);
+        yesInterval = null;
+    }
+
+    // Create a full-screen overlay and fade it in
+    const overlay = document.createElement('div');
+    overlay.id = 'terminal-exit-overlay';
+    overlay.style.position = 'fixed';
+    overlay.style.left = '0';
+    overlay.style.top = '0';
+    overlay.style.width = '100%';
+    overlay.style.height = '100%';
+    overlay.style.background = '#000';
+    overlay.style.opacity = '0';
+    overlay.style.zIndex = '9999';
+    overlay.style.transition = 'opacity 600ms ease';
+    document.body.appendChild(overlay);
+
+    // Force a frame then start fade
+    requestAnimationFrame(() => {
+        overlay.style.opacity = '1';
+    });
+
+    // After animation, redirect to index.html
+    setTimeout(() => {
+        window.location.href = 'index.html';
+    }, 650);
+
+    // Return false to stop the normal prompt re-creation
+    return false;
+}
+
 function tree() {
     const line = document.createElement("div");
     line.className = "line output-line info";
@@ -197,10 +233,6 @@ function executeCommand(cmd) {
         const result = commands[commandAliases[command]][0](parts);
         if (result === false) return;
     } else {
-        const line = document.createElement("div");
-        line.className = "line output-line info";
-        line.innerHTML = `bash: ${cmd}: command not found`;
-        terminal.appendChild(line);
     }
 
     const newInputLine = document.createElement('div');
