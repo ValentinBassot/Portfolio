@@ -1,0 +1,205 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #140a0a;
+    font-family: 'Courier New', monospace;
+    color: #b3adad;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 32px;
+    overflow: hidden;
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+}
+
+a {
+    color: #b3adad;
+    text-decoration: underline;
+}
+
+a:hover {
+    color: #928d8d;
+    text-decoration: none;
+}
+
+.terminal-container {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 18px;
+    border-radius: 14px;
+    background: rgba(10,8,12,0.28);
+    -webkit-backdrop-filter: blur(16px) saturate(1.05);
+    backdrop-filter: blur(16px) saturate(1.05);
+    border: 1px solid rgba(255,255,255,0.06);
+    box-shadow: 0 18px 40px rgba(2,6,10,0.6), 0 2px 0 rgba(255,255,255,0.02) inset;
+}
+
+/* Slight outer frame to make the wallpaper "peek" a bit around the window */
+.terminal-container::after {
+    content: '';
+    position: absolute;
+    inset: -10px;
+    border-radius: 18px;
+    pointer-events: none;
+    box-shadow: 0 0 0 6px rgba(0,0,0,0.18);
+    z-index: 0;
+}
+
+.terminal-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.03);
+}
+
+.terminal-title {
+    color: #3b82f6;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.btn {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.btn.close { background: #ff5f56; }
+.btn.minimize { background: #ffbd2e; }
+.btn.maximize { background: #27c93f; }
+
+.terminal {
+    flex: 1;
+    overflow-y: auto;
+    padding: 8px 0;
+    margin-bottom: 10px;
+}
+
+.terminal::-webkit-scrollbar {
+    width: 8px;
+}
+
+.terminal::-webkit-scrollbar-track {
+    background: #0a0e14;
+}
+
+.terminal::-webkit-scrollbar-thumb {
+    background: #1c252c;
+    border-radius: 4px;
+}
+
+.prompt {
+    color: #3b82f6;
+}
+
+.command {
+    color: #60a5fa;
+}
+
+.error {
+    color: #60a5fa;
+}
+
+.success {
+    color: #c3e88d;
+}
+
+.info {
+    color: #b3adad;
+}
+
+.line {
+    margin-bottom: 5px;
+    line-height: 1.5;
+}
+
+.prompt-symbol {
+    color: #3b82f6;
+    font-weight: bold;
+}
+
+.user {
+    color: #93c5fd;
+}
+
+.at {
+    color: #b3adad;
+}
+
+.host {
+    color: #2563eb;
+}
+
+.path {
+    color: #3b82f6;
+}
+
+#command-input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+}
+
+.cursor {
+    display: inline-block;
+    width: 8px;
+    height: 16px;
+    background: #60a5fa;
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+}
+
+.ascii-art {
+    color: #3b82f6;
+    font-size: 14px;
+    line-height: 1.2;
+    white-space: pre;
+}
+
+
+#bg-video {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -2;
+    opacity: 0.92;
+    pointer-events: none;
+}
+
+.bg-tint {
+    position: fixed;
+    inset: 0;
+    background: rgba(10, 6, 6, 0.18);
+    z-index: -1;
+    pointer-events: none;
+}
+
+@supports not ((-webkit-backdrop-filter: blur(16px)) or (backdrop-filter: blur(16px))) {
+    .terminal-container { background: rgba(10, 6, 6, 0.4); }
+}
