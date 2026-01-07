@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentin - Portfolio</title>
+    <link rel="stylesheet" href="portfolio.css">
+</head>
+<body>
+    
+    <!-- Header Navigation -->
+    <header class="header" id="header">
+        <div class="container">
+            <div class="nav">
+                <a href="portfolio.html" class="logo">Valentin</a>
+                <div class="nav-links">
+                    <a href="#projects" class="nav-link">Projets</a>
+                    <a href="#about" class="nav-link">À propos</a>
+                    <a href="#contact" class="nav-link">Contact</a>
+                    <a href="terminal.html" class="nav-btn">Terminal</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-bg"></div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-left">
+                    <h1 class="hero-title">Bien plus qu'un développeur</h1>
+                    <p class="hero-text">Que ce soit pour des projets web, des outils innovants ou des applications complètes, découvrez mon travail et mes compétences. Explorez mon portfolio en un clic.</p>
+                    <a href="#projects" class="hero-cta">Découvrir mes projets</a>
+                </div>
+
+                <div class="hero-right">
+                    <div class="hero-card" id="heroCard">
+                        <div class="card-content">
+                            <div class="card-category" id="cardCategory">Développement Web</div>
+                            <div class="card-title" id="cardTitle">Portfolio Interactif</div>
+                            <button class="card-button">Voir le projet</button>
+                            <div class="card-badge" id="cardBadge">
+                                <div class="badge-icon">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                        <circle cx="12" cy="12" r="10" fill="#3B82F6"/>
+                                        <path d="M8 12L11 15L16 9" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </div>
+                                <div class="badge-text">
+                                    <div class="badge-label" id="badgeLabel">Projet terminé</div>
+                                    <div class="badge-date" id="badgeDate">Janvier 2026</div>
+                                </div>
+                                <div class="badge-value" id="badgeValue">100%</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Intro Section -->
+    <section class="intro">
+        <div class="container">
+            <h2 class="intro-title">Découvrez mes réalisations</h2>
+            <p class="intro-text">De la conception au déploiement, je crée des solutions modernes et performantes. Explorez mes projets et voyez comment je peux transformer vos idées en réalité.</p>
+            <a href="#contact" class="intro-cta">Me contacter</a>
+        </div>
+    </section>
+
+    <!-- Featured Projects -->
+    <section class="featured">
+        <div class="container">
+            <div class="featured-grid" id="featuredGrid">
+                <!-- Projects will be injected by JS -->
+            </div>
+        </div>
+    </section>
+
+    <script src="data.js"></script>
+    <script src="portfolio.js"></script>
+</body>
+</html>
