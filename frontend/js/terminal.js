@@ -38,30 +38,31 @@ function whoami() {
 }
 
 function clear() {
-    terminal.innerHTML = '';
-    const art = ` /$$    /$$          /$$                       /$$     /$$          
-| $$   | $$         | $$                      | $$    |__/          
-| $$   | $$ /$$$$$$ | $$  /$$$$$$  /$$$$$$$  /$$$$$$   /$$ /$$$$$$$ 
-|  $$ / $$/|____  $$| $$ /$$__  $$| $$__  $$|_  $$_/  | $$| $$__  $$
- \  $$ $$/  /$$$$$$$| $$| $$$$$$$$| $$  \ $$  | $$    | $$| $$  \ $$
-  \  $$$/  /$$__  $$| $$| $$_____/| $$  | $$  | $$ /$$| $$| $$  | $$
-   \  $/  |  $$$$$$$| $$|  $$$$$$$| $$  | $$  |  $$$$/| $$| $$  | $$
-    \_/    \_______/|__/ \_______/|__/  |__/   \___/  |__/|__/  |__/`;
+    // stop any running repeated outputs
+    if (yesInterval) {
+        clearInterval(yesInterval);
+        yesInterval = null;
+    }
 
-    const artDiv = document.createElement('div');
-    artDiv.className = 'line output-line ascii-art';
-    artDiv.textContent = art;
-    terminal.appendChild(artDiv);
+    // remove all output lines and input lines (keep only the banner)
+    const outputLines = terminal.querySelectorAll('.output-line');
+    outputLines.forEach(el => el.remove());
+    
+    const inputLines = terminal.querySelectorAll('.terminal-input-line, #input-line, #sudo-input-line');
+    inputLines.forEach(el => el.remove());
 
-    const info1 = document.createElement('div');
-    info1.className = 'line output-line info';
-    info1.innerHTML = "Welcome to my website";
-    terminal.appendChild(info1);
+    // recreate a single input prompt at the end
+    const newInputLine = document.createElement('div');
+    newInputLine.className = "line terminal-input-line";
+    newInputLine.id = "input-line";
+    newInputLine.innerHTML = `<span class="prompt">[<span class="user">valentin</span><span class="at">@</span><span class="host">website</span> <span class="path">${currentPath.slice(0,-1)}</span>]$</span> <input class="command" type="text" id="command-input" autofocus autocomplete="off"></input>`;
+    terminal.appendChild(newInputLine);
+    setInput();
 
-    const info2 = document.createElement('div');
-    info2.className = 'line output-line info';
-    info2.innerHTML = "Type 'help' to see available commands";
-    terminal.appendChild(info2);
+    terminal.scrollTop = terminal.scrollHeight;
+    
+    // return false to prevent executeCommand from creating another input line
+    return false;
 }
 
 function exitCmd() {
@@ -535,5 +536,12 @@ document.addEventListener("keydown", (e) => {
         clearExecution();
     }
 });
+
+// Create initial input line
+const initialInputLine = document.createElement('div');
+initialInputLine.className = "line terminal-input-line";
+initialInputLine.id = "input-line";
+initialInputLine.innerHTML = `<span class="prompt">[<span class="user">valentin</span><span class="at">@</span><span class="host">website</span> <span class="path">~</span>]$</span> <input class="command" type="text" id="command-input" autofocus autocomplete="off"></input>`;
+terminal.appendChild(initialInputLine);
 
 setInput()

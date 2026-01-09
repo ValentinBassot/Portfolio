@@ -8,7 +8,7 @@
 </head>
 <body>
     <video id="bg-video" autoplay muted loop playsinline>
-        <source src="assets/bg.mp4" type="video/mp4">
+        <source src="assets/hero.mp4" type="video/mp4">
     </video>
 
     <div class="bg-tint"></div>
@@ -25,23 +25,60 @@
         </div>
 
         <div class="terminal" id="terminal">
-            <div class="line output-line ascii-art"> /$$    /$$          /$$                       /$$     /$$          
-| $$   | $$         | $$                      | $$    |__/          
-| $$   | $$ /$$$$$$ | $$  /$$$$$$  /$$$$$$$  /$$$$$$   /$$ /$$$$$$$ 
-|  $$ / $$/|____  $$| $$ /$$__  $$| $$__  $$|_  $$_/  | $$| $$__  $$
- \  $$ $$/  /$$$$$$$| $$| $$$$$$$$| $$  \ $$  | $$    | $$| $$  \ $$
-  \  $$$/  /$$__  $$| $$| $$_____/| $$  | $$  | $$ /$$| $$| $$  | $$
-   \  $/  |  $$$$$$$| $$|  $$$$$$$| $$  | $$  |  $$$$/| $$| $$  | $$
-    \_/    \_______/|__/ \_______/|__/  |__/   \___/  |__/|__/  |__/</div>
-            <div class="line output-line info">Welcome to my website</div>
-            <div class="line output-line info">Type 'help' to see available commands</div>
-            <div class="line terminal-input-line" id="input-line">
-                <span class="prompt">[<span class="user">valentin</span><span class="at">@</span><span class="host">website</span> <span class="path">~</span>]$</span> 
-                <input class="command" type="text" id="command-input" autofocus autocomplete="off"></input>
+            <div id="persistent-top" class="banner">
+                <div class="line info">Arch Linux 5.9.12-arch1-1 (tty1)</div>
+                <div class="line ascii-row">
+                    <pre class="ascii-art">
+                  -`
+                 .o+`
+                `ooo/
+               `+oooo:
+              `+oooooo:
+              -+oooooo+:
+            `/:-:++oooo+:
+           `/++++/+++++++:
+          `/++++++++++++++:
+         `/+++ooooooooooooo/`
+        ./ooosssso++osssssso+`
+       .oossssso-````/osssssso+`
+      -osssssso.      :ssssssso.
+     :osssssss/        osssso+++.
+    /ossssssss/        +ssssooo/-
+  `/ossssso+/:-        -:/+ossssso+-
+ `+sso+:-`                  `.-/+oso:
+`++:.                            `-/+/
+.`                                  `/
+                    </pre>
+                <div class="ascii-info">
+                    <div class="info-top"><strong>root@kurisPC</strong></div>
+                    <div class="info-line"><strong>OS:</strong> Arch Linux x86_64</div>
+                    <div class="info-line"><strong>Host:</strong> VirtualBox 1.2</div>
+                    <div class="info-line"><strong>Kernel:</strong> 5.9.12-arch1-1</div>
+                    <div class="info-line"><strong>Uptime:</strong> 30 secs</div>
+                    <div class="info-line"><strong>Packages:</strong> 163 (pacman)</div>
+                    <div class="info-line"><strong>Shell:</strong> bash 5.0.18</div>
+                    <div class="info-line"><strong>Resolution:</strong> preferred</div>
+                    <div class="info-line"><strong>Terminal:</strong> /dev/tty1</div>
+                    <div class="info-line"><strong>CPU:</strong> Intel Pentium 3805U (1) @ 1.895GHz</div>
+                    <div class="info-line"><strong>GPU:</strong> 00:02.0 VMware SVGA II Adapter</div>
+                    <div class="info-line"><strong>Memory:</strong> 64MiB / 977MiB</div>
+
+                    <div class="color-palette" aria-hidden="true">
+                        <span class="sw c1"></span>
+                        <span class="sw c2"></span>
+                        <span class="sw c3"></span>
+                        <span class="sw c4"></span>
+                        <span class="sw c5"></span>
+                        <span class="sw c6"></span>
+                        <span class="sw c7"></span>
+                        <span class="sw c8"></span>
+                    </div>
+                </div>
             </div>
+            <div class="line info">Welcome to my website</div>
+            <div class="line info">Type 'help' to see available commands</div>
         </div>
     </div>
-
     <script src="js/data.js"></script>
     <script src="js/terminal.js"></script>
 </body>
