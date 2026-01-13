@@ -139,7 +139,6 @@ a:hover {
 
 .tree-prefix {
     color: #6b7280;
-    /* muted for connectors */
 }
 
 .tree-name {
@@ -226,7 +225,7 @@ a:hover {
     color: #3b82f6;
     font-family: 'DejaVu Sans Mono', 'Menlo', 'Monaco', 'Courier New', monospace;
     font-size: 13px;
-    line-height: 1;
+    line-height: 1.3;
     letter-spacing: 0.6px;
     font-variant-ligatures: none;
     white-space: pre;
@@ -268,14 +267,37 @@ a:hover {
     display: inline-block;
 }
 
-.color-palette .c1 { background: #a80000; }
-.color-palette .c2 { background: #d97300; }
-.color-palette .c3 { background: #d9d100; }
-.color-palette .c4 { background: #2fb84b; }
-.color-palette .c5 { background: #3b82f6; }
-.color-palette .c6 { background: #8b5cf6; }
-.color-palette .c7 { background: #14b8a6; }
-.color-palette .c8 { background: #9ca3af; }
+.color-palette .c1 {
+    background: #a80000;
+}
+
+.color-palette .c2 {
+    background: #d97300;
+}
+
+.color-palette .c3 {
+    background: #d9d100;
+}
+
+.color-palette .c4 {
+    background: #2fb84b;
+}
+
+.color-palette .c5 {
+    background: #3b82f6;
+}
+
+.color-palette .c6 {
+    background: #8b5cf6;
+}
+
+.color-palette .c7 {
+    background: #14b8a6;
+}
+
+.color-palette .c8 {
+    background: #9ca3af;
+}
 
 
 #bg-video {

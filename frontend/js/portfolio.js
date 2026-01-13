@@ -1,24 +1,20 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Elements
     const hero = document.getElementById('hero');
     const header = document.getElementById('header');
     const featuredGrid = document.getElementById('featuredGrid');
     
-    // Scroll effect for header and hero shrink
     let lastScroll = 0;
     const scrollThreshold = 100;
     
     window.addEventListener('scroll', () => {
         const currentScroll = window.pageYOffset;
         
-        // Header background on scroll
         if (currentScroll > 50) {
             header.classList.add('scrolled');
         } else {
             header.classList.remove('scrolled');
         }
         
-        // Hero shrink effect
         if (currentScroll > scrollThreshold) {
             hero.classList.add('shrink');
         } else {
@@ -28,14 +24,12 @@ document.addEventListener('DOMContentLoaded', () => {
         lastScroll = currentScroll;
     });
     
-    // Load data from virtualFolder (data.js)
     const projectsData = [];
     
     if (window.virtualFolder) {
         const projectsRoot = window.virtualFolder['projects/'];
         
         if (projectsRoot) {
-            // Extract all projects from virtualFolder
             for (const folderName in projectsRoot) {
                 const folder = projectsRoot[folderName];
                 for (const fileName in folder) {
@@ -51,7 +45,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
         
-        // Update hero card with first project if available
         if (projectsData.length > 0) {
             const firstProject = projectsData[0];
             document.getElementById('cardCategory').textContent = firstProject.category;
@@ -62,7 +55,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
     
-    // Generate featured project cards
     const gradients = [
         'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
         'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
@@ -72,7 +64,6 @@ document.addEventListener('DOMContentLoaded', () => {
         'linear-gradient(135deg, #30cfd0 0%, #330867 100%)'
     ];
     
-    // Create at least 3 project cards
     const displayProjects = projectsData.length > 0 ? projectsData : [
         {
             category: 'website',
@@ -124,7 +115,6 @@ document.addEventListener('DOMContentLoaded', () => {
         featuredGrid.appendChild(card);
     });
     
-    // Smooth scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();

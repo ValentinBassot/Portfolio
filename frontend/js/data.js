@@ -1,4 +1,3 @@
-// Shared data file for virtualFolder used by terminal and classic portfolio
 window.virtualFolder = {
     "projects/": {
         "website/": {
