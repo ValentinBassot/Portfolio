@@ -5,6 +5,7 @@ import swaggerUi from 'swagger-ui-express';
 import { swaggerSpec } from './config/swagger';
 import { healthRouter } from './modules/health/router';
 import { meRouter } from './modules/me/router';
+import { authRouter } from './modules/auth/router';
 
 dotenv.config({ path: '../.env' });
 
@@ -21,5 +22,6 @@ app.get('/', (req, res) => {
 
 app.use('/health', healthRouter);
 app.use('/me', meRouter);
+app.use('/auth', authRouter);
 
 export default app;
