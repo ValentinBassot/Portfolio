@@ -1,6 +1,6 @@
-import { MeResponse } from './schema';
+import { InfoResponse } from './schema';
 
-export const getMeInfo = (): MeResponse => {
+export const getInfo = (): InfoResponse => {
   return {
     firstName: 'Valentin',
     lastName: 'Bassot',

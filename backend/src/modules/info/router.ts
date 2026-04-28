@@ -1,17 +1,17 @@
 import { Router } from 'express';
-import * as meController from './controller';
+import * as infoController from './controller';
 
 const router = Router();
-router.get('/', meController.getMe);
+router.get('/', infoController.getInfo);
 
-export const meRouter = router;
+export const infoRouter = router;
 
 
 /**
  * @swagger
- * /me:
+ * /info:
  *   get:
- *     summary: Récupère les informations du profil
+ *     summary: Récupère les informations publiques du profil
  *     description: Renvoie le nom, prénom, cursus et une description.
  *     responses:
  *       200:
