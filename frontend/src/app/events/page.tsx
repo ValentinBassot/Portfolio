@@ -36,7 +36,7 @@ export default function EvenementsPage() {
             <motion.div variants={itemVariants} key={evenement.id} className="relative w-full group">
               <motion.div 
                 whileHover={{ scale: 1.2 }}
-                className="absolute -left-[33px] bg-black p-1 flex justify-center items-center w-8 h-8 rounded-full border border-white/20 text-white shadow-sm z-10"
+                className="absolute -left-8.25 bg-black p-1 flex justify-center items-center w-8 h-8 rounded-full border border-white/20 text-white shadow-sm z-10"
               >
                 <span className="text-xs font-bold leading-none">{index + 1}</span>
               </motion.div>
