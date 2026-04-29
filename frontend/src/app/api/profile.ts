@@ -5,10 +5,19 @@ export interface ProfileData {
 }
 
 export async function fetchProfile(): Promise<ProfileData> {
-  const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+  
+  if (!apiUrl) {
+    console.error('NEXT_PUBLIC_API_URL environment variable is not set');
+    return {
+      name: '',
+      role: '',
+      bio: '',
+    };
+  }
   
   try {
-    const res = await fetch(`${apiUrl}/me`);
+    const res = await fetch(`${apiUrl}/info`);
     if (!res.ok) {
       throw new Error(`Failed to fetch profile: ${res.statusText}`);
     }

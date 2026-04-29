@@ -11,6 +11,15 @@ const options: swaggerJsdoc.Options = {
       version: '1.0.0',
       description: 'API documentation for the Portfolio backend',
     },
+    components: {
+      securitySchemes: {
+        bearerAuth: {
+          type: 'http',
+          scheme: 'bearer',
+          bearerFormat: 'JWT',
+        },
+      },
+    },
     servers: [
       {
         url: process.env.SWAGGER_SERVER_URL,

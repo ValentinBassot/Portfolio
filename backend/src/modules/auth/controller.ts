@@ -1,7 +1,11 @@
 import { Request, Response } from 'express';
-import { ZodError } from 'zod';
 import * as authService from './service';
-import { authResponseSchema, loginSchema, registerSchema } from './schema';
+import {
+  authResponseSchema,
+  currentUserSchema,
+  LoginInput,
+  RegisterInput,
+} from './schema';
 
 const sendKnownError = (error: unknown, res: Response): boolean => {
   if (!(error instanceof Error)) {
@@ -23,17 +27,12 @@ const sendKnownError = (error: unknown, res: Response): boolean => {
 
 export const register = async (req: Request, res: Response): Promise<void> => {
   try {
-    const payload = registerSchema.parse(req.body);
+    const payload = req.body as RegisterInput;
     const result = await authService.register(payload);
     const validatedResponse = authResponseSchema.parse(result);
 
     res.status(201).json(validatedResponse);
   } catch (error) {
-    if (error instanceof ZodError) {
-      res.status(400).json({ error: 'Validation error', details: error.issues });
-      return;
-    }
-
     if (sendKnownError(error, res)) {
       return;
     }
@@ -44,21 +43,30 @@ export const register = async (req: Request, res: Response): Promise<void> => {
 
 export const login = async (req: Request, res: Response): Promise<void> => {
   try {
-    const payload = loginSchema.parse(req.body);
+    const payload = req.body as LoginInput;
     const result = await authService.login(payload);
     const validatedResponse = authResponseSchema.parse(result);
 
     res.status(200).json(validatedResponse);
   } catch (error) {
-    if (error instanceof ZodError) {
-      res.status(400).json({ error: 'Validation error', details: error.issues });
-      return;
-    }
-
     if (sendKnownError(error, res)) {
       return;
     }
 
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+};
+
+export const getMe = (req: Request, res: Response): void => {
+  try {
+    if (!req.user) {
+      res.status(401).json({ error: 'Unauthorized' });
+      return;
+    }
+
+    const validatedResponse = currentUserSchema.parse(req.user);
+    res.status(200).json(validatedResponse);
+  } catch {
     res.status(500).json({ error: 'Internal Server Error' });
   }
 };
