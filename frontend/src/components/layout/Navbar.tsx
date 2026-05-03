@@ -52,7 +52,7 @@ export default function Navbar() {
           <div className="flex items-center">
             {!isMobile ? (
               <a
-                href="/cv.pdf"
+                href="/CV_BASSOT.pdf"
                 download
                 className="inline-flex items-center justify-center px-4 py-2 text-sm font-medium rounded-full text-black bg-white hover:bg-zinc-200 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-zinc-500 min-w-30">
                   Download CV
@@ -91,7 +91,7 @@ export default function Navbar() {
               <Link href="/associations" onClick={() => setOpen(false)} className="text-white drop-shadow-[0_0_6px_rgba(255,255,255,0.85)] px-3 py-2 rounded-md hover:bg-white/5 transition-colors text-base">Associations</Link>
               <Link href="/skills" onClick={() => setOpen(false)} className="text-white drop-shadow-[0_0_6px_rgba(255,255,255,0.85)] px-3 py-2 rounded-md hover:bg-white/5 transition-colors text-base">Skills</Link>
               <Link href="/events" onClick={() => setOpen(false)} className="text-white drop-shadow-[0_0_6px_rgba(255,255,255,0.85)] px-3 py-2 rounded-md hover:bg-white/5 transition-colors text-base">Events</Link>
-              <a href="/cv.pdf" download onClick={() => setOpen(false)} className="mt-2 inline-flex items-center justify-center px-4 py-2 text-sm font-medium rounded-full text-black bg-white hover:bg-zinc-200 transition-colors">Download CV</a>
+              <a href="/CV_BASSOT.pdf" download onClick={() => setOpen(false)} className="mt-2 inline-flex items-center justify-center px-4 py-2 text-sm font-medium rounded-full text-black bg-white hover:bg-zinc-200 transition-colors">Download CV</a>
               </nav>
             </div>
           </div>
