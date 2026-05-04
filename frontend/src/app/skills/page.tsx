@@ -1,12 +1,14 @@
 'use client';
 
 import { Technology, Education } from '@/types';
+import useGithubRepos from '@/hooks/useGithubRepos';
 import { motion } from 'framer-motion';
 
 export default function CompetencesPage() {
   const technologies: Technology[] = [];
 
   const parcours: Education[] = [];
+  const { data, loading, error } = useGithubRepos();
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -47,7 +49,7 @@ export default function CompetencesPage() {
       </motion.section>
 
       <motion.section variants={itemVariants} className="space-y-8">
-        <h2 className="text-3xl font-bold border-b border-white/10 pb-4 text-white">My Journey</h2>
+        <h2 className="text-3xl font-bold border-b border-white/10 pb-4 text-white">Contributions</h2>
         <div className="space-y-8">
           {parcours.map(item => (
             <motion.div whileHover={{ x: 5 }} key={item.id} className="flex flex-col md:flex-row gap-6 p-6 sm:p-8 glass-panel rounded-2xl">
@@ -62,6 +64,36 @@ export default function CompetencesPage() {
                 {item.description && <p className="text-sm text-zinc-500 mt-2">{item.description}</p>}
               </div>
             </motion.div>
+          ))}
+
+          {data && data.contributions && data.contributions.length > 0 && (
+            <div className="space-y-4">
+              <h3 className="text-xl font-semibold text-white">Open Source Contributions</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {data.contributions.map(repo => (
+                  <motion.a key={repo.id} whileHover={{ scale: 1.02 }} href={repo.html_url} target="_blank" rel="noreferrer" className="p-6 glass-panel block">
+                    <h3 className="text-lg font-bold mb-2 text-white">{repo.name}</h3>
+                    <p className="text-sm text-zinc-400 mb-4">{repo.description}</p>
+                    <div className="text-xs text-zinc-500">{repo.full_name}</div>
+                  </motion.a>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+      </motion.section>
+
+      <motion.section variants={itemVariants} className="space-y-8">
+        <h2 className="text-3xl font-bold border-b border-white/10 pb-4 text-white">My Projects</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {loading && <div className="text-zinc-400">Loading repos...</div>}
+          {error && <div className="text-red-500">{error}</div>}
+          {data && data.others.map(repo => (
+            <motion.a key={repo.id} whileHover={{ scale: 1.02 }} href={repo.html_url} target="_blank" rel="noreferrer" className="p-6 glass-panel block">
+              <h3 className="text-lg font-bold mb-2 text-white">{repo.name}</h3>
+              <p className="text-sm text-zinc-400 mb-4">{repo.description}</p>
+              <div className="text-xs text-zinc-500">{repo.full_name}</div>
+            </motion.a>
           ))}
         </div>
       </motion.section>

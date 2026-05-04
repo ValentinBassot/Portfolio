@@ -78,7 +78,7 @@ export default function Home() {
           <div className="flex flex-col items-center text-center space-y-2">
             <motion.h2 variants={itemVariants} className="text-3xl font-bold tracking-tighter sm:text-4xl text-white">
               <span className="inline-block px-8 py-3 rounded-full glass-panel border border-white/10 bg-black/40 backdrop-blur-lg shadow-[0_0_30px_rgba(255,255,255,0.15)] relative">
-                My Journey
+                Contributions
                 <div className="absolute inset-0 rounded-full bg-white/5 blur-xl -z-10"></div>
               </span>
             </motion.h2>
