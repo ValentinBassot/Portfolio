@@ -9,7 +9,7 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    const check = () => setIsMobile(window.innerWidth <= 800);
+    const check = () => setIsMobile(window.innerWidth <= 900);
     check();
     window.addEventListener('resize', check);
     return () => window.removeEventListener('resize', check);
@@ -39,6 +39,9 @@ export default function Navbar() {
               </Link>
               <Link href="/associations" className="text-white drop-shadow-[0_0_6px_rgba(255,255,255,0.85)] hover:text-white px-3 py-2 rounded-md text-base font-medium transition-colors">
                 Associations
+              </Link>
+              <Link href="/journey" className="text-white drop-shadow-[0_0_6px_rgba(255,255,255,0.85)] hover:text-white px-3 py-2 rounded-md text-base font-medium transition-colors">
+                Journey
               </Link>
               <Link href="/skills" className="text-white drop-shadow-[0_0_6px_rgba(255,255,255,0.85)] hover:text-white px-3 py-2 rounded-md text-base font-medium transition-colors">
                 Skills
@@ -89,6 +92,7 @@ export default function Navbar() {
               <Link href="/" onClick={() => setOpen(false)} className="text-white drop-shadow-[0_0_6px_rgba(255,255,255,0.85)] px-3 py-2 rounded-md hover:bg-white/5 transition-colors text-base">Home</Link>
               <Link href="/epitech" onClick={() => setOpen(false)} className="text-white drop-shadow-[0_0_6px_rgba(255,255,255,0.85)] px-3 py-2 rounded-md hover:bg-white/5 transition-colors text-base">Epitech</Link>
               <Link href="/associations" onClick={() => setOpen(false)} className="text-white drop-shadow-[0_0_6px_rgba(255,255,255,0.85)] px-3 py-2 rounded-md hover:bg-white/5 transition-colors text-base">Associations</Link>
+              <Link href="/journey" onClick={() => setOpen(false)} className="text-white drop-shadow-[0_0_6px_rgba(255,255,255,0.85)] px-3 py-2 rounded-md hover:bg-white/5 transition-colors text-base">Journey</Link>
               <Link href="/skills" onClick={() => setOpen(false)} className="text-white drop-shadow-[0_0_6px_rgba(255,255,255,0.85)] px-3 py-2 rounded-md hover:bg-white/5 transition-colors text-base">Skills</Link>
               <Link href="/events" onClick={() => setOpen(false)} className="text-white drop-shadow-[0_0_6px_rgba(255,255,255,0.85)] px-3 py-2 rounded-md hover:bg-white/5 transition-colors text-base">Events</Link>
               <a href="/CV_BASSOT.pdf" download onClick={() => setOpen(false)} className="mt-2 inline-flex items-center justify-center px-4 py-2 text-sm font-medium rounded-full text-black bg-white hover:bg-zinc-200 transition-colors">Download CV</a>

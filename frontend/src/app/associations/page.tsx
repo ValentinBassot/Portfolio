@@ -3,10 +3,13 @@
 import { LinkedInPost } from '@/types';
 import useGithubRepos from '@/hooks/useGithubRepos';
 import { motion } from 'framer-motion';
+import { useState } from 'react';
+import ProjectModal, { SelectedProject } from '@/components/ui/ProjectModal';
 
 export default function AssociationsPage() {
   const posts: LinkedInPost[] = [];
   const { data, loading, error } = useGithubRepos();
+  const [selectedProject, setSelectedProject] = useState<SelectedProject | null>(null);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -23,7 +26,7 @@ export default function AssociationsPage() {
       initial="hidden"
       animate="visible"
       variants={containerVariants}
-      className="container mx-auto px-4 py-12 max-w-7xl space-y-16"
+      className="container mx-auto px-4 pt-28 pb-12 max-w-7xl space-y-16"
     >
       <div className="space-y-4">
         <motion.h1 variants={itemVariants} className="text-4xl sm:text-5xl font-bold tracking-tight text-white">Associations</motion.h1>
@@ -39,12 +42,12 @@ export default function AssociationsPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {loading && <div className="text-zinc-400">Loading repos...</div>}
           {error && <div className="text-red-500">{error}</div>}
-          {data && data.poc.map(repo => (
-            <motion.a whileHover={{ scale: 1.02 }} key={repo.id} href={repo.html_url} target="_blank" rel="noreferrer" className="p-6 glass-panel block">
+          {data && data.poc.filter((repo: any) => repo.name.toLowerCase().includes('nexus')).map((repo: any) => (
+            <motion.div whileHover={{ scale: 1.02 }} key={repo.id} onClick={() => setSelectedProject(repo)} className="p-6 glass-panel block cursor-pointer">
               <h3 className="text-lg font-bold mb-2 text-white">{repo.name}</h3>
               <p className="text-sm text-zinc-400 mb-4">{repo.description}</p>
               <div className="text-xs text-zinc-500">{repo.full_name}</div>
-            </motion.a>
+            </motion.div>
           ))}
         </div>
       </motion.section>
@@ -54,7 +57,7 @@ export default function AssociationsPage() {
           <h2 className="text-3xl font-bold text-white">Junior Conseil Taker</h2>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {posts.filter(p => p.tags.includes('#Taker')).map(post => (
+          {posts.filter((p: any) => p.tags.includes('#Taker')).map((post: any) => (
              <motion.div whileHover={{ scale: 1.02 }} key={post.id} className="p-6 glass-panel flex flex-col justify-between space-y-4">
                <p className="text-sm text-zinc-300">{post.content}</p>
                <div className="flex justify-between items-center text-xs text-zinc-500">
@@ -65,6 +68,8 @@ export default function AssociationsPage() {
           ))}
         </div>
       </motion.section>
+
+      <ProjectModal project={selectedProject} onClose={() => setSelectedProject(null)} />
     </motion.div>
   );
 }
