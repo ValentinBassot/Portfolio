@@ -4,7 +4,48 @@ import { Event } from '@/types';
 import { motion } from 'framer-motion';
 
 export default function EvenementsPage() {
-  const evenements: Event[] = [];
+  const evenements: Event[] = [
+    {
+      id: "1",
+      title: "Independent Developer - NEXUS-V",
+      date: "2026-01-01",
+      location: "St-Symphorien-sur-Coise",
+      description: "Creation of websites, e-commerce, and mobile applications. Deployment of turnkey software solutions integrating AI and Cybersecurity with overall project management.",
+      type: "Experience"
+    },
+    {
+      id: "2",
+      title: "Project Manager - Junior Conseil Taker",
+      date: "2025-09-01",
+      location: "Lyon",
+      description: "End-to-end project management: requirements analysis, drafting specifications, commercial relations (negotiation), and managing contributors.",
+      type: "Experience"
+    },
+    {
+      id: "3",
+      title: "Hack & Juice CTF (1st Place Regional)",
+      date: "2025-11-15",
+      location: "Lyon",
+      description: "Cybersecurity challenge: Web pentesting and vulnerability audit on OWASP Top 10 flaws. Reached the first place regionally.",
+      type: "Competition"
+    },
+    {
+      id: "4",
+      title: "Operational Assistant - Briconautic",
+      date: "2025-04-01",
+      location: "Trégastel",
+      description: "Customer service, sale of nautical equipment, and logistical management of the boat fleet (April and August 2025).",
+      type: "Experience"
+    },
+    {
+      id: "5",
+      title: "Volunteer Firefighter - SDMIS",
+      date: "2022-01-01",
+      location: "St-Symphorien-sur-Coise",
+      description: "Fast and coordinated emergency interventions in a team. Strict compliance with safety protocols and maintaining analytical skills under high pressure.",
+      type: "Volunteering"
+    }
+  ];
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -21,7 +62,7 @@ export default function EvenementsPage() {
       initial="hidden"
       animate="visible"
       variants={containerVariants}
-      className="container mx-auto px-4 py-12 max-w-7xl space-y-16"
+      className="container mx-auto px-4 pt-28 pb-12 max-w-7xl space-y-16"
     >
       <div className="space-y-4">
         <motion.h1 variants={itemVariants} className="text-4xl sm:text-5xl font-bold tracking-tight text-white">Events</motion.h1>
@@ -36,7 +77,7 @@ export default function EvenementsPage() {
             <motion.div variants={itemVariants} key={evenement.id} className="relative w-full group">
               <motion.div 
                 whileHover={{ scale: 1.2 }}
-                className="absolute -left-8.25 bg-black p-1 flex justify-center items-center w-8 h-8 rounded-full border border-white/20 text-white shadow-sm z-10"
+                className="absolute -left-[17px] top-4 bg-black p-1 flex justify-center items-center w-8 h-8 rounded-full border border-white/20 text-white shadow-sm z-10"
               >
                 <span className="text-xs font-bold leading-none">{index + 1}</span>
               </motion.div>

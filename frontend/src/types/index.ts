@@ -46,5 +46,5 @@ export interface Event {
   date: string;
   location: string;
   description: string;
-  type: 'Meetup' | 'Hackathon' | 'Conference';
+  type: 'Meetup' | 'Hackathon' | 'Conference' | 'Experience' | 'Competition' | 'Volunteering';
 }
