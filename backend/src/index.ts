@@ -1,11 +1,12 @@
 import app from './app';
 
-const PORT = process.env.PORT;
+const port = process.env.PORT || 3001;
 
-if (!PORT) {
-  throw new Error('La variable d\'environnement PORT n\'est pas définie dans le fichier .env');
+if (!process.env.PORT) {
+  throw new Error('The PORT environment variable is not defined in the .env file');
 }
 
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+app.listen(port, () => {
+  console.log(`Server is running at http://localhost:${port}`);
+  console.log(`Swagger docs available at http://localhost:${port}/api-docs`);
 });

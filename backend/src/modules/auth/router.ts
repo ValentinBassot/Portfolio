@@ -18,8 +18,8 @@ export const authRouter = router;
  *   post:
  *     tags:
  *       - Auth
- *     summary: Crée un nouvel utilisateur
- *     description: Crée un compte utilisateur puis retourne un token JWT.
+ *     summary: Creates a new user
+ *     description: Creates a user account and returns a JWT token.
  *     requestBody:
  *       required: true
  *       content:
@@ -40,7 +40,7 @@ export const authRouter = router;
  *                 minLength: 8
  *     responses:
  *       201:
- *         description: Utilisateur créé et authentifié.
+ *         description: User successfully created and authenticated.
  *         content:
  *           application/json:
  *             schema:
@@ -71,9 +71,9 @@ export const authRouter = router;
  *                       nullable: true
  *                       example: Valentin
  *       400:
- *         description: Données invalides.
+ *         description: Invalid data.
  *       409:
- *         description: Email déjà utilisé.
+ *         description: Email already in use.
  */
 
 /**
@@ -82,8 +82,8 @@ export const authRouter = router;
  *   post:
  *     tags:
  *       - Auth
- *     summary: Authentifie un utilisateur
- *     description: Vérifie les identifiants et retourne un token JWT.
+ *     summary: Authenticates a user
+ *     description: Verifies credentials and returns a JWT token.
  *     requestBody:
  *       required: true
  *       content:
@@ -101,7 +101,7 @@ export const authRouter = router;
  *                 type: string
  *     responses:
  *       200:
- *         description: Authentification réussie.
+ *         description: Successful authentication.
  *         content:
  *           application/json:
  *             schema:
@@ -132,7 +132,7 @@ export const authRouter = router;
  *                       nullable: true
  *                       example: Valentin
  *       400:
- *         description: Données invalides.
+ *         description: Invalid data.
  *       401:
  *         description: Identifiants invalides.
  */
@@ -143,13 +143,13 @@ export const authRouter = router;
  *   get:
  *     tags:
  *       - Auth
- *     summary: Retourne l'utilisateur contenu dans le token JWT
- *     description: Route protégée qui lit les informations du token via le middleware secure.
+ *     summary: Returns the user from the JWT token
+ *     description: Protected route that reads token data via the secure middleware.
  *     security:
  *       - bearerAuth: []
  *     responses:
  *       200:
- *         description: Utilisateur authentifié.
+ *         description: Authenticated user.
  *         content:
  *           application/json:
  *             schema:

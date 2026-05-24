@@ -10,9 +10,9 @@ export const healthRouter = router;
  * @swagger
  * /health:
  *   get:
- *     summary: Vérifie l'état de l'API
- *     description: Retourne un statut 200 si l'API est en ligne.
+ *     summary: Check API state
+ *     description: Returns a 200 status if the API is online.
  *     responses:
  *       200:
- *         description: L'API est opérationnelle.
+ *         description: The API is operational.
  */

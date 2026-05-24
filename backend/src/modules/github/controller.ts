@@ -46,3 +46,19 @@ export const getRepos = async (req: Request, res: Response): Promise<void> => {
     res.status(500).json({ error: message });
   }
 };
+
+export const getReadme = async (req: Request, res: Response): Promise<void> => {
+  try {
+    const repo = req.query.repo as string;
+    if (!repo) {
+      res.status(400).json({ error: 'Missing repo parameter' });
+      return;
+    }
+    const html = await githubService.fetchReadmeHtml(repo);
+    res.status(200).send(html);
+  } catch (error) {
+    console.error(error);
+    const message = error instanceof Error ? error.message : 'Failed to fetch README';
+    res.status(500).json({ error: message });
+  }
+};

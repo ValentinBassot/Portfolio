@@ -11,11 +11,11 @@ export const infoRouter = router;
  * @swagger
  * /info:
  *   get:
- *     summary: Récupère les informations publiques du profil
- *     description: Renvoie le nom, prénom, cursus et une description.
+ *     summary: Retrieve public profile information
+ *     description: Returns the first name, last name, cursus, and a description.
  *     responses:
  *       200:
- *         description: Informations renvoyées avec succès.
+ *         description: Information successfully returned.
  *         content:
  *           application/json:
  *             schema:

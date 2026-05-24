@@ -215,3 +215,16 @@ export const fetchGroupedRepos = async () => {
     others: othersMapped,
   };
 };
+
+export async function fetchReadmeHtml(fullName: string): Promise<string> {
+  const url = `https://api.github.com/repos/${fullName}/readme`;
+  const headers: Record<string, string> = { Accept: 'application/vnd.github.v3.html' };
+  if (TOKEN) headers.Authorization = `Bearer ${TOKEN}`;
+
+  const res = await fetch(url, { headers });
+  if (!res.ok) {
+    const text = await res.text();
+    throw new Error(`GitHub API error ${res.status}: ${text}`);
+  }
+  return res.text();
+}
