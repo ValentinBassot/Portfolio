@@ -12,8 +12,11 @@ type GitHubRepo = {
 
 type Grouped = {
   epitech: GitHubRepo[];
+  epitechGrouped?: Record<string, GitHubRepo[]>;
+  epitechUngrouped?: GitHubRepo[];
   poc: GitHubRepo[];
   others: GitHubRepo[];
+  contributions?: GitHubRepo[];
 };
 
 export const useGithubRepos = () => {
@@ -26,8 +29,8 @@ export const useGithubRepos = () => {
       setLoading(true);
       setError(null);
       try {
-        const base = process.env.NEXT_PUBLIC_API_URL ;
-        const res = await fetch(`${base}/github/repos`);
+        const base = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
+        const res = await fetch(`${base.replace(/\/$/, '')}/github/repos`);
         if (!res.ok) throw new Error('Failed to fetch');
         const json = await res.json();
         setData(json);
