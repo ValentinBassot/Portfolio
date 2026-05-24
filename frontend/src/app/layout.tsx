@@ -14,8 +14,22 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Valentin Bassot - Portfolio",
-  description: "Cybersecurity student at Epitech",
+  title: {
+    default: "Valentin Bassot | Cybersecurity Student at Epitech",
+    template: "%s | Valentin Bassot",
+  },
+  description: "Portfolio of Valentin Bassot, Cybersecurity student at Epitech. Explore my journey, projects, skills, and open-source contributions.",
+  keywords: ["Valentin Bassot", "Portfolio", "Cybersecurity", "Epitech", "Full Stack Developer", "Software Engineer"],
+  authors: [{ name: "Valentin Bassot" }],
+  creator: "Valentin Bassot",
+  openGraph: {
+    title: "Valentin Bassot | Portfolio",
+    description: "Cybersecurity student at Epitech. Discover my projects and skills.",
+    url: "https://valentinbassot.com",
+    siteName: "Valentin Bassot Portfolio",
+    locale: "en_US",
+    type: "website",
+  },
 };
 
 export default function RootLayout({
@@ -30,7 +44,7 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col bg-black text-white relative">
         <Navbar />
-        <main className="grow z-10 relative">
+        <main className="grow relative">
           {children}
         </main>
       </body>
