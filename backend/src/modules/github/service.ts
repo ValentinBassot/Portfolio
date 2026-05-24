@@ -65,7 +65,7 @@ async function fetchPaginatedRepos(url: string): Promise<GitHubRepo[]> {
 
 async function fetchPaginatedOrgOrUserRepos(name: string): Promise<GitHubRepo[]> {
   try {
-    return await fetchPaginatedRepos(`https://api.github.com/orgs/${name}/repos`);
+    return await fetchPaginatedRepos(`https://api.github.com/orgs/${name}/repos?type=all`);
   } catch {
     return await fetchPaginatedRepos(`https://api.github.com/users/${name}/repos`);
   }
@@ -149,17 +149,7 @@ export const fetchGroupedRepos = async () => {
     Promise.all(others.map(enrichRepo)),
   ]);
 
-  const epitechContributorPromises = epitechMapped.map((repo) =>
-    isUserContributor(repo.full_name, userLogin).then((isContributor) => ({
-      repo,
-      isContributor,
-    }))
-  );
-  const epitechWithContributor = await Promise.all(epitechContributorPromises);
-  const epitechFiltered = epitechWithContributor
-    .filter(({ isContributor }) => isContributor)
-    .map(({ repo }) => repo)
-    .sort(sortByDate);
+  const epitechFiltered = epitechMapped.sort(sortByDate);
 
   const tokenCounts: Record<string, number> = {};
   const repoTokens: Record<number, string[]> = {};
